@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
-* Студент: [Эльдар Мендигужаев](https://up.htmlacademy.ru/javascript/23/user/1688633).
-* Наставник: `Неизвестно`.
+- Студент: [Эльдар Мендигужаев](https://up.htmlacademy.ru/javascript/23/user/1688633).
+- Наставник: [Владислав Зубко](https://htmlacademy.ru/profile/whatislove).
 
 ---
 
