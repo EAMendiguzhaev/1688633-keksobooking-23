@@ -7,21 +7,11 @@ const randomInteger = function (min, max) {
 };
 randomInteger(0, 100);
 
-/*
-
-Либо вот такой вариант:
-const randomInteger = function (min, max) {
-  return Math.floor(Math.random() * (max + 1 - min)) + min;
-};
-randomInteger(0, 100);
-
-*/
-
 // Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 
 const getFractionalNumber = function (min, max, fixed) {
   const randomNumber = Math.random() * (max + 1 - min) + min;
-  return randomNumber.toFixed(fixed);
+  return Number(randomNumber.toFixed(fixed));
 };
 
 getFractionalNumber(0, 100.777, 2);
