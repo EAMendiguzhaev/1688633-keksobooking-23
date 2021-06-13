@@ -65,7 +65,4 @@ const createOffer = () => ({
 // Создает новые рандомные объекты
 const createOffers = (count) => new Array(count).fill(null).map(() => createOffer());
 
-export { MocksConfig, createOffer, createOffers };
-
-// createOffers(MocksConfig.OFFERS_COUNT);
-// console.log(createOffers(MocksConfig.OFFERS_COUNT)); // для проверки что работает =)
+export { MocksConfig, createOffers };

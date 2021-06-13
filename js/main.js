@@ -1,3 +1,4 @@
-import * as createOffers from './data.js';
+import { MocksConfig, createOffers } from './data.js';
 
-createOffers;
+createOffers(MocksConfig.OFFERS_COUNT);
+// console.log(createOffers(MocksConfig.OFFERS_COUNT)); // для проверки что работает =)
