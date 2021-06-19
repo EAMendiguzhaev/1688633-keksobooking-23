@@ -21,4 +21,29 @@ const getRandomItems = (items, count) => {
   return shuffledItems.slice(0, count);
 };
 
-export { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems };
+// Функция исправляет окончания
+const declOfNum = (number, textForms) => {
+  number = Math.abs(number) % 100;
+  const number1 = number % 10;
+  if (number > 10 && number < 20) {
+    return textForms[2];
+  }
+  if (number1 > 1 && number1 < 5) {
+    return textForms[1];
+  }
+  if (number1 === 1) {
+    return textForms[0];
+  }
+  return textForms[2];
+};
+
+const removeEmptyHtmlElements = (data) => {
+  const elements = Array.from(data.children);
+  elements.forEach((element) => {
+    if (element.src === '' || (element.innerHTML === '' && element.tagName.toLowerCase() !== 'img')) {
+      element.remove();
+    }
+  });
+};
+
+export { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems, declOfNum, removeEmptyHtmlElements };
