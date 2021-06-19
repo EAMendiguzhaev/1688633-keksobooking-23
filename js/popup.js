@@ -1,12 +1,9 @@
 import { createOffer } from './data.js';
-import { declOfNum, removeEmptyHtmlElements } from './util.js';
+import { removeEmptyHtmlElements } from './util.js';
 
 const popup = document.querySelector('#card').content.querySelector('.popup');
 const mapCanvas = document.querySelector('#map-canvas');
 const popupOfferPhoto = popup.querySelector('.popup__photo');
-const offers = createOffer();
-const getQuests = declOfNum(offers.offer.guests, ['гостя', 'гостей', 'гостей']);
-const getRooms = declOfNum(offers.offer.rooms, ['комната', 'комнаты', 'комнат']);
 
 const offerTypeToReadable = {
   'flat': 'Квартира',
@@ -40,13 +37,13 @@ const getOfferAddPhotos = (photos) => {
   return fragment;
 };
 
-const getOffer = ({ avatar, offer }) => {
+const renderPopup = ({ avatar, offer }) => {
   const popupElement = popup.cloneNode(true);
   popupElement.querySelector('.popup__title').textContent = offer.title;
   popupElement.querySelector('.popup__text--address').textContent = offer.address;
   popupElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
   popupElement.querySelector('.popup__type').textContent = offerTypeToReadable[offer.type];
-  popupElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} ${getRooms} для ${offer.guests} ${getQuests}`;
+  popupElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   popupElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   popupElement.querySelector('.popup__features').innerHTML = '';
   popupElement.querySelector('.popup__features').append(getOfferAddFeatures(offer.features));
@@ -59,4 +56,4 @@ const getOffer = ({ avatar, offer }) => {
   mapCanvas.append(popupElement);
 };
 
-getOffer(offers);
+renderPopup(createOffer());
