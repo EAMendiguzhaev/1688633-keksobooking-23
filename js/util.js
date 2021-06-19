@@ -21,4 +21,13 @@ const getRandomItems = (items, count) => {
   return shuffledItems.slice(0, count);
 };
 
-export { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems };
+const removeEmptyHtmlElements = (data) => {
+  const elements = Array.from(data.children);
+  elements.forEach((element) => {
+    if (element.src === '' || (element.innerHTML === '' && element.tagName.toLowerCase() !== 'img')) {
+      element.remove();
+    }
+  });
+};
+
+export { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems, removeEmptyHtmlElements };
