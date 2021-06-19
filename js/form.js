@@ -1,17 +1,18 @@
-const mapFilters = [...document.forms[0]];
-const fieldsets = [...document.forms[1]];
 const adForm = document.querySelector('.ad-form');
 const mapForm = document.querySelector('.map__filters');
+
+const arrAdForm = [...adForm];
+const arrMapForm = [...mapForm];
 
 const getBlockForms = () => {
   adForm.classList.add('ad-form--disabled');
   mapForm.classList.add('ad-form--disabled');
 
-  fieldsets.forEach((element) => {
+  arrAdForm.forEach((element) => {
     element.setAttribute('disabled', 'disabled');
   });
 
-  mapFilters.forEach((element) => {
+  arrMapForm.forEach((element) => {
     element.setAttribute('disabled', 'disabled');
   });
 };
@@ -20,11 +21,11 @@ const getActiveForms = () => {
   adForm.classList.remove('ad-form--disabled');
   mapForm.classList.remove('ad-form--disabled');
 
-  fieldsets.forEach((element) => {
+  arrAdForm.forEach((element) => {
     element.removeAttribute('disabled');
   });
 
-  mapFilters.forEach((element) => {
+  arrMapForm.forEach((element) => {
     element.removeAttribute('disabled');
   });
 };
