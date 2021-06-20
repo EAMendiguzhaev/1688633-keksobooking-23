@@ -4,30 +4,30 @@ const mapForm = document.querySelector('.map__filters');
 const arrAdForm = [...adForm];
 const arrMapForm = [...mapForm];
 
-const getBlockForms = () => {
+const blockForms = () => {
   adForm.classList.add('ad-form--disabled');
   mapForm.classList.add('ad-form--disabled');
 
   arrAdForm.forEach((element) => {
-    element.setAttribute('disabled', 'disabled');
+    element.disabled = true;
   });
 
   arrMapForm.forEach((element) => {
-    element.setAttribute('disabled', 'disabled');
+    element.disabled = true;
   });
 };
 
-const getActiveForms = () => {
+const activeForms = () => {
   adForm.classList.remove('ad-form--disabled');
   mapForm.classList.remove('ad-form--disabled');
 
   arrAdForm.forEach((element) => {
-    element.removeAttribute('disabled');
+    element.disabled = false;
   });
 
   arrMapForm.forEach((element) => {
-    element.removeAttribute('disabled');
+    element.disabled = false;
   });
 };
 
-export { getBlockForms, getActiveForms };
+export { blockForms, activeForms };
