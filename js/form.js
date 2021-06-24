@@ -30,4 +30,4 @@ const activeForms = () => {
   });
 };
 
-export { blockForms, activeForms };
+export { blockForms, activeForms, adForm };

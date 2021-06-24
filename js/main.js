@@ -1,12 +1,16 @@
 import { MocksConfig, createOffers } from './data.js';
 import { blockForms, activeForms } from './form.js';
+import { formValidate } from './validateInputs.js';
 import './popup.js';
 
+// Генерация объекта
 createOffers(MocksConfig.OFFERS_COUNT);
-// console.log(createOffers(MocksConfig.OFFERS_COUNT));
 
-// Активное состояние
-activeForms();
+// Включение валидации полей
+formValidate();
 
 // Неактивное состояние
 blockForms();
+
+// Активное состояние
+activeForms();
