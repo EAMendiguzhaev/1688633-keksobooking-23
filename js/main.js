@@ -1,12 +1,14 @@
 import { MocksConfig, createOffers } from './data.js';
-import { blockForms, activeForms } from './form.js';
+import { toggleFormStatus } from './form.js';
+import { initFormValidation } from './validate-inputs.js';
 import './popup.js';
+import './common.js';
 
+// Генерация объекта
 createOffers(MocksConfig.OFFERS_COUNT);
-// console.log(createOffers(MocksConfig.OFFERS_COUNT));
 
-// Активное состояние
-activeForms();
+// Переключает состояние Form (true - активное, false - неактивное)
+toggleFormStatus(true);
 
-// Неактивное состояние
-blockForms();
+// Включение валидации полей
+initFormValidation();

@@ -1,33 +1,16 @@
-const adForm = document.querySelector('.ad-form');
-const mapForm = document.querySelector('.map__filters');
+const adFormNode = document.querySelector('.ad-form');
+const adFormFieldsetsNodes = adFormNode.querySelectorAll('fieldset');
 
-const arrAdForm = [...adForm];
-const arrMapForm = [...mapForm];
-
-const blockForms = () => {
-  adForm.classList.add('ad-form--disabled');
-  mapForm.classList.add('ad-form--disabled');
-
-  arrAdForm.forEach((element) => {
-    element.disabled = true;
-  });
-
-  arrMapForm.forEach((element) => {
-    element.disabled = true;
+const toggleNodesDisabled = (nodes, isDisabled) => {
+  nodes.forEach((item) => {
+    item.disabled = isDisabled;
   });
 };
 
-const activeForms = () => {
-  adForm.classList.remove('ad-form--disabled');
-  mapForm.classList.remove('ad-form--disabled');
+const toggleFormStatus = (isActive) => {
+  adFormNode.classList.toggle('ad-form--disabled', !isActive);
 
-  arrAdForm.forEach((element) => {
-    element.disabled = false;
-  });
-
-  arrMapForm.forEach((element) => {
-    element.disabled = false;
-  });
+  toggleNodesDisabled(adFormFieldsetsNodes, !isActive);
 };
 
-export { blockForms, activeForms };
+export { toggleFormStatus, adFormNode };

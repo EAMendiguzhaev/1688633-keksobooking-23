@@ -1,16 +1,17 @@
 import { createOffer } from './data.js';
 import { removeEmptyHtmlElements } from './util.js';
+import { offerType } from './common.js';
 
 const popup = document.querySelector('#card').content.querySelector('.popup');
 const mapCanvas = document.querySelector('#map-canvas');
 const popupOfferPhoto = popup.querySelector('.popup__photo');
 
 const offerTypeToReadable = {
-  'flat': 'Квартира',
-  'bungalow': 'Бунгало',
-  'house': 'Дом',
-  'palace': 'Дворец',
-  'hotel': 'Отель',
+  [offerType.BUNGALOW]: 'Бунгало',
+  [offerType.FLAT]: 'Квартира',
+  [offerType.HOTEL]: 'Отель',
+  [offerType.HOUSE]: 'Дом',
+  [offerType.PALACE]: 'Дворец',
 };
 
 const getOfferAddFeatures = (features) => {
