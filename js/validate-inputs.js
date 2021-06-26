@@ -33,7 +33,7 @@ const initFormValidation = () => {
         capacityNode.setCustomValidity(roomsToCapacities[roomNumber].includes(capacityNumber) ? '' : 'Количество гостей больше чем комнат');
         break;
       }
-      // Валидация времени заеды и выезда
+      // Валидация времени заезда и выезда
       case timeInNode.name:
       case timeOutNode.name: {
         timeInNode.value = value;
