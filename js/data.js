@@ -1,4 +1,5 @@
 import { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems } from './util.js';
+import { offerType } from './common.js';
 
 const MocksConfig = {
   OFFERS_COUNT: 3,
@@ -10,7 +11,7 @@ const MocksConfig = {
     MIN: 1000,
     MAX: 10000,
   },
-  TYPE: ['palace', 'flat', 'house', 'bungalow', 'hotel'],
+  TYPE: Object.values(offerType),
   ROOMS: {
     MIN: 1,
     MAX: 7,
