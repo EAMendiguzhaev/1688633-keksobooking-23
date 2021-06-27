@@ -2,7 +2,7 @@ import { getRandomPositiveInteger, getRandomPositiveFloat, getRandomItems } from
 import { offerType } from './common.js';
 
 const MocksConfig = {
-  OFFERS_COUNT: 3,
+  OFFERS_COUNT: 14,
   AVATAR: {
     MIN: 1,
     MAX: 8,
@@ -33,8 +33,8 @@ const MocksConfig = {
     MAX: 35.7,
   },
   LNG: {
-    MIN: 35.65,
-    MAX: 35.7,
+    MIN: 139.7,
+    MAX: 139.8,
   },
 };
 

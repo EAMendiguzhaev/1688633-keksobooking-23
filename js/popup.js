@@ -1,9 +1,7 @@
-import { createOffer } from './data.js';
 import { removeEmptyHtmlElements } from './util.js';
 import { offerType } from './common.js';
 
 const popup = document.querySelector('#card').content.querySelector('.popup');
-const mapCanvas = document.querySelector('#map-canvas');
 const popupOfferPhoto = popup.querySelector('.popup__photo');
 
 const offerTypeToReadable = {
@@ -54,7 +52,7 @@ const renderPopup = ({ avatar, offer }) => {
   popupElement.querySelector('.popup__avatar').src = avatar;
 
   removeEmptyHtmlElements(popupElement);
-  mapCanvas.append(popupElement);
+  return popupElement;
 };
 
-renderPopup(createOffer());
+export { renderPopup };
