@@ -35,7 +35,7 @@ const initMap = () => {
         lat: MapSettings.LAT,
         lng: MapSettings.LNG,
       },
-      10,
+      MapSettings.ZOOM,
     );
 
   const mapLayer = L.tileLayer(MapSettings.OSM_URL, { attribution: MapSettings.OSM_ATTRIBUTION });
@@ -112,7 +112,7 @@ const initMap = () => {
         lat: MapSettings.LAT,
         lng: MapSettings.LNG,
       },
-      10,
+      MapSettings.ZOOM,
     );
   });
 
