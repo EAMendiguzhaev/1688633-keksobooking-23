@@ -5,7 +5,7 @@ import { renderPopup } from './popup.js';
 
 const resetButton = document.querySelector('.ad-form__reset');
 const address = document.querySelector('#address');
-const MapSettings = {
+const MapSetting = {
   LAT: 35.68951,
   LNG: 139.69171,
   ZOOM: 10,
@@ -32,13 +32,13 @@ const initMap = () => {
     })
     .setView(
       {
-        lat: MapSettings.LAT,
-        lng: MapSettings.LNG,
+        lat: MapSetting.LAT,
+        lng: MapSetting.LNG,
       },
-      MapSettings.ZOOM,
+      MapSetting.ZOOM,
     );
 
-  const mapLayer = L.tileLayer(MapSettings.OSM_URL, { attribution: MapSettings.OSM_ATTRIBUTION });
+  const mapLayer = L.tileLayer(MapSetting.OSM_URL, { attribution: MapSetting.OSM_ATTRIBUTION });
 
   // Функция генерации Иконок
   const getPinIcon = (url, width, heigth) => {
@@ -67,10 +67,10 @@ const initMap = () => {
   };
 
   const mainMarker = getPinMarker(
-    MapSettings.LAT,
-    MapSettings.LNG,
+    MapSetting.LAT,
+    MapSetting.LNG,
     true,
-    getPinIcon(MapSettings.ICON_URL.MAIN, MapSettings.ICON_SIZE_MAIN.WIDTH, MapSettings.ICON_SIZE_MAIN.HEIGHT),
+    getPinIcon(MapSetting.ICON_URL.MAIN, MapSetting.ICON_SIZE_MAIN.WIDTH, MapSetting.ICON_SIZE_MAIN.HEIGHT),
   );
 
   // Слушатель на Красный Маркер
@@ -91,7 +91,7 @@ const initMap = () => {
       lat,
       lng,
       true,
-      getPinIcon(MapSettings.ICON_URL.REGULAR, MapSettings.ICON_SIZE_REGULAR.WIDTH, MapSettings.ICON_SIZE_REGULAR.HEIGHT),
+      getPinIcon(MapSetting.ICON_URL.REGULAR, MapSetting.ICON_SIZE_REGULAR.WIDTH, MapSetting.ICON_SIZE_REGULAR.HEIGHT),
     );
 
     const marker = regularMarker;
@@ -103,16 +103,16 @@ const initMap = () => {
   // Кнопка "Очистить"
   resetButton.addEventListener('click', () => {
     mainMarker.setLatLng({
-      lat: MapSettings.LAT,
-      lng: MapSettings.LNG,
+      lat: MapSetting.LAT,
+      lng: MapSetting.LNG,
     });
 
     map.setView(
       {
-        lat: MapSettings.LAT,
-        lng: MapSettings.LNG,
+        lat: MapSetting.LAT,
+        lng: MapSetting.LNG,
       },
-      MapSettings.ZOOM,
+      MapSetting.ZOOM,
     );
   });
 
