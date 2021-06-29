@@ -1,14 +1,14 @@
-import { MocksConfig, createOffers } from './data.js';
 import { toggleFormStatus } from './form.js';
 import { initFormValidation } from './validate-inputs.js';
 import './popup.js';
 import './common.js';
-
-// Генерация объекта
-createOffers(MocksConfig.OFFERS_COUNT);
+import { initMap } from './map.js';
 
 // Переключает состояние Form (true - активное, false - неактивное)
-toggleFormStatus(true);
+toggleFormStatus(false);
+
+// Загрузка карты
+initMap();
 
 // Включение валидации полей
 initFormValidation();
