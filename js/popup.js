@@ -1,15 +1,15 @@
 import { removeEmptyHtmlElements } from './util.js';
-import { offerType } from './common.js';
+import { OfferType } from './common.js';
 
 const popup = document.querySelector('#card').content.querySelector('.popup');
 const popupOfferPhoto = popup.querySelector('.popup__photo');
 
 const offerTypeToReadable = {
-  [offerType.BUNGALOW]: 'Бунгало',
-  [offerType.FLAT]: 'Квартира',
-  [offerType.HOTEL]: 'Отель',
-  [offerType.HOUSE]: 'Дом',
-  [offerType.PALACE]: 'Дворец',
+  [OfferType.BUNGALOW]: 'Бунгало',
+  [OfferType.FLAT]: 'Квартира',
+  [OfferType.HOTEL]: 'Отель',
+  [OfferType.HOUSE]: 'Дом',
+  [OfferType.PALACE]: 'Дворец',
 };
 
 const getOfferAddFeatures = (features) => {

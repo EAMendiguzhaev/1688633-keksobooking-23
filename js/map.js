@@ -1,8 +1,7 @@
-import { toggleFormStatus } from './form.js';
+import { adFormNode, toggleFormStatus } from './form.js';
 import { renderPopup } from './popup.js';
 import { showAlert, listenerCloneNodes } from './util.js';
 import { getData, sendData } from './create-fetch.js';
-import { adFormNode } from './form.js';
 
 const resetButton = document.querySelector('.ad-form__reset');
 const address = document.querySelector('#address');
