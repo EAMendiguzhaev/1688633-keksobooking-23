@@ -1,4 +1,4 @@
-const offerType = {
+const OfferType = {
   BUNGALOW: 'bungalow',
   FLAT: 'flat',
   HOTEL: 'hotel',
@@ -6,12 +6,20 @@ const offerType = {
   PALACE: 'palace',
 };
 
-const offerTypeToPrice = {
-  [offerType.BUNGALOW]: 0,
-  [offerType.FLAT]: 1000,
-  [offerType.HOTEL]: 3000,
-  [offerType.HOUSE]: 5000,
-  [offerType.PALACE]: 10000,
+const OfferTypeToPrice = {
+  [OfferType.BUNGALOW]: 0,
+  [OfferType.FLAT]: 1000,
+  [OfferType.HOTEL]: 3000,
+  [OfferType.HOUSE]: 5000,
+  [OfferType.PALACE]: 10000,
 };
 
-export { offerType, offerTypeToPrice };
+const HttpMethod = {
+  POST: 'POST',
+};
+
+const KeyboardKey = {
+  ESCAPE: 'Escape',
+};
+
+export { OfferType, OfferTypeToPrice, HttpMethod, KeyboardKey };

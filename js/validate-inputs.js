@@ -1,5 +1,5 @@
 import { adFormNode } from './form.js';
-import { offerTypeToPrice } from './common.js';
+import { OfferTypeToPrice } from './common.js';
 
 const initFormValidation = () => {
   const priceNode = adFormNode.querySelector('#price');
@@ -20,7 +20,7 @@ const initFormValidation = () => {
     switch (name) {
       // Валидация типа жилья
       case typeNode.name: {
-        const price = offerTypeToPrice[value];
+        const price = OfferTypeToPrice[value];
         priceNode.min = price;
         priceNode.placeholder = price;
         break;
