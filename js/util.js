@@ -1,3 +1,5 @@
+import { KeyboardKey } from './common.js';
+
 const ALERT_SHOW_TIME = 3000;
 
 const getRandomPositiveInteger = (min, max) => {
@@ -56,11 +58,10 @@ const showAlert = (message, color) => {
 const listenerCloneNodes = (node) => {
   const cloneNode = node.cloneNode(true);
   const buttonNode = cloneNode.querySelector('.error__button');
-  const body = document.querySelector('body');
-  body.insertAdjacentElement('beforeend', cloneNode);
+  document.body.insertAdjacentElement('beforeend', cloneNode);
 
   document.addEventListener('keydown', (evt) => {
-    if (evt.keyCode === 27 && cloneNode) {
+    if (evt.key === KeyboardKey.ESCAPE && cloneNode) {
       cloneNode.remove();
     }
   });

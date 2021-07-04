@@ -1,8 +1,10 @@
+import { HttpMethod } from './common.js';
+
 const API_URL = 'https://23.javascript.pages.academy/keksobooking';
 
 const checkStatus = (response) => {
   const { status, statusText } = response;
-  if (response.status !== 200) {
+  if (!response.ok) {
     throw new Error(`${status} - ${statusText}`);
   }
 
@@ -19,7 +21,7 @@ const getData = (successHandler, errorHandler) => {
 
 const sendData = (successHandler, errorHandler, body) => {
   fetch(API_URL, {
-    method: 'POST',
+    method: HttpMethod.POST,
     body,
   })
     .then(checkStatus)

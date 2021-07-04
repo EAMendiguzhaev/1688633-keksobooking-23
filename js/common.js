@@ -14,4 +14,12 @@ const OfferTypeToPrice = {
   [OfferType.PALACE]: 10000,
 };
 
-export { OfferType, OfferTypeToPrice };
+const HttpMethod = {
+  POST: 'POST',
+};
+
+const KeyboardKey = {
+  ESCAPE: 'Escape',
+};
+
+export { OfferType, OfferTypeToPrice, HttpMethod, KeyboardKey };
