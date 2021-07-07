@@ -1,12 +1,14 @@
 import { adFormNode, toggleFormStatus } from './form.js';
 import { renderPopup } from './popup.js';
-import { showAlert, listenerCloneNodes } from './util.js';
+import { showAlert, listenerCloneNodes, debounce } from './util.js';
 import { getData, sendData } from './create-fetch.js';
+import { getFilteredOffers, filterNode } from './filter.js';
 
 const resetButton = document.querySelector('.ad-form__reset');
 const address = document.querySelector('#address');
 const succes = document.querySelector('#success').content.querySelector('.success');
 const error = document.querySelector('#error').content.querySelector('.error');
+const localOffers = [];
 
 const MapSetting = {
   LAT: 35.68951,
@@ -45,6 +47,7 @@ const initMap = () => {
     );
 
   const mapLayer = L.tileLayer(MapSetting.OSM_URL, { attribution: MapSetting.OSM_ATTRIBUTION });
+  const markers = L.layerGroup().addTo(map);
 
   // Функция генерации Иконок
   const getPinIcon = (url, width, heigth) => {
@@ -113,21 +116,14 @@ const initMap = () => {
       const regularMarker = getPinMarker(
         lat,
         lng,
-        true,
+        false,
         getPinIcon(MapSetting.ICON_URL.REGULAR, MapSetting.ICON_SIZE_REGULAR.WIDTH, MapSetting.ICON_SIZE_REGULAR.HEIGHT),
       );
 
-      const marker = regularMarker;
-      marker.addTo(map).bindPopup(createCustomPopup, {
+      regularMarker.addTo(markers).bindPopup(createCustomPopup, {
         keepInView: true,
       });
     });
-  };
-
-  // Функция обрезания прилетающих объектов до заданных параметров
-  const createOffers = (offers) => {
-    const cutOffers = offers.slice(0, MapSetting.COUNT_OFFERS);
-    renderOffers(cutOffers);
   };
 
   // Функция отправки данных на сервер
@@ -147,12 +143,35 @@ const initMap = () => {
     });
   };
 
+  // Функиця  очистки/фильтрации/отрисовки полученных объектов
+  const updateOffers = (offers) => {
+    markers.clearLayers(); // Очистка маркеров
+    const filteredOffers = getFilteredOffers(offers).slice(0, MapSetting.COUNT_OFFERS);
+    renderOffers(filteredOffers); // Отрисовка
+  };
+
+  // Получение объектов с сервера
+  getData(
+    (offers) => {
+      localOffers.push(...offers);
+      updateOffers(localOffers);
+    },
+    () => showAlert(MapSetting.MESSAGE_ALERT, MapSetting.MESSAGE_COLOR),
+  );
+
+  filterNode.addEventListener(
+    'change',
+    debounce(() => {
+      updateOffers(localOffers);
+    }),
+  );
+
   // Кнопка "Очистить"
   resetButton.addEventListener('click', () => {
     resetMarker();
+    filterNode.reset();
   });
 
-  getData(createOffers, () => showAlert(MapSetting.MESSAGE_ALERT, MapSetting.MESSAGE_COLOR));
   sendNewOffer(adFormNode);
   mapLayer.addTo(map);
   mainMarker.addTo(map);
