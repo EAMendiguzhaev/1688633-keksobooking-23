@@ -49,11 +49,11 @@ const renderPopup = ({ author, offer }) => {
     popupNode.querySelector('.popup__features').append(getOfferAddFeatures(offer.features));
   }
   popupNode.querySelector('.popup__description').textContent = offer.description;
+  popupNode.querySelector('.popup__photos').innerHTML = '';
   if (offer.photos) {
-    popupNode.querySelector('.popup__photos').innerHTML = '';
     popupNode.querySelector('.popup__photos').append(getOfferAddPhotos(offer.photos));
+    popupNode.querySelector('.popup__avatar').src = author.avatar;
   }
-  popupNode.querySelector('.popup__avatar').src = author.avatar;
 
   removeEmptyHtmlElements(popupNode);
   return popupNode;
