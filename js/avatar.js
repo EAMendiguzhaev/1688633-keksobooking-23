@@ -33,11 +33,11 @@ const removeImageNode = (wrapper) => {
 
 const uploadImage = (input, wrapper) => {
   input.addEventListener('change', () => {
-    const file = input.files[0];
+    const [file] = input.files;
     const fileName = file.name.toLowerCase();
-    const matches = FILE_TYPES.some((item) => fileName.endsWith(item));
+    const isMatche = FILE_TYPES.some((item) => fileName.endsWith(item));
 
-    if (matches) {
+    if (isMatche) {
       const reader = new FileReader();
 
       reader.addEventListener('load', () => {
