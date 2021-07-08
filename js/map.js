@@ -3,6 +3,7 @@ import { renderPopup } from './popup.js';
 import { showAlert, listenerCloneNodes, debounce } from './util.js';
 import { getData, sendData } from './create-fetch.js';
 import { getFilteredOffers, filterNode } from './filter.js';
+import { resetImage } from './avatar.js';
 
 const resetButton = document.querySelector('.ad-form__reset');
 const address = document.querySelector('#address');
@@ -170,6 +171,7 @@ const initMap = () => {
   resetButton.addEventListener('click', () => {
     resetMarker();
     filterNode.reset();
+    resetImage();
   });
 
   sendNewOffer(adFormNode);
