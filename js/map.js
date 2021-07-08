@@ -14,7 +14,7 @@ const localOffers = [];
 const MapSetting = {
   LAT: 35.68951,
   LNG: 139.69171,
-  ZOOM: 10,
+  ZOOM: 12,
   OSM_URL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   OSM_ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   ICON_URL: {
@@ -136,7 +136,7 @@ const initMap = () => {
 
       sendData(
         () => {
-          listenerCloneNodes(succes), node.reset();
+          listenerCloneNodes(succes), node.reset(), resetImage();
         },
         () => listenerCloneNodes(error),
         formData,
