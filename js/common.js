@@ -6,7 +6,7 @@ const OfferType = {
   PALACE: 'palace',
 };
 
-const OfferTypeToPrice = {
+const offerTypeToPrice = {
   [OfferType.BUNGALOW]: 0,
   [OfferType.FLAT]: 1000,
   [OfferType.HOTEL]: 3000,
@@ -22,4 +22,4 @@ const KeyboardKey = {
   ESCAPE: 'Escape',
 };
 
-export { OfferType, OfferTypeToPrice, HttpMethod, KeyboardKey };
+export { OfferType, offerTypeToPrice, HttpMethod, KeyboardKey };
