@@ -62,19 +62,30 @@ const listenerCloneNodes = (node) => {
   const buttonNode = cloneNode.querySelector('.error__button');
   document.body.insertAdjacentElement('beforeend', cloneNode);
 
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === KeyboardKey.ESCAPE && cloneNode) {
-      cloneNode.remove();
-    }
-  });
+  let onModalKeyDown = null;
+  let onModalClick = null;
 
-  document.addEventListener('click', (evt) => {
-    if (evt.target === cloneNode) {
-      cloneNode.remove();
-    } else if (buttonNode) {
-      cloneNode.remove();
+  const closeModal = () => {
+    cloneNode.remove();
+
+    document.removeEventListener('keydown', onModalKeyDown);
+    document.removeEventListener('click', onModalClick);
+  };
+
+  onModalKeyDown = (evt) => {
+    if (evt.key === KeyboardKey.ESCAPE && cloneNode) {
+      closeModal();
     }
-  });
+  };
+
+  onModalClick = (evt) => {
+    if (evt.target === cloneNode || buttonNode) {
+      closeModal();
+    }
+  };
+
+  document.addEventListener('keydown', onModalKeyDown);
+  document.addEventListener('click', onModalClick);
 };
 
 // Функция debounce
